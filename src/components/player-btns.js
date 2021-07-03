@@ -1,11 +1,17 @@
+import { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faStop, faArrowDown } from '@fortawesome/free-solid-svg-icons';
-// const electron = window.require('electron');
-// const { ipcRenderer} = require('electron');
 
 function PlayerBtn() {
+    useEffect(() => {
+    }, []);
+
+    const onRender = () => {
+        window.api.request("runEvent", "some data");
+    }
+
     return <div className="player-btn">
-        <button className="btn play-btn run" onClick={runTagui}>
+        <button className="btn play-btn run" onClick={onRender}>
             <FontAwesomeIcon icon={faPlay} color="white" />
             <span className="btn-text">
                 Run

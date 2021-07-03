@@ -6,8 +6,12 @@ function createWindow() {
     const win = new BrowserWindow({
         width: 800,
         height: 600,
+        transparent: true,
         webPreferences: {
-            enableRemoteModule:true,
+            enableRemoteModule:false,
+            contextIsolation: true,
+            nodeIntegration: false,
+            preload: __dirname + '/preload.js'
             // preload: path.join(__dirname, 'preload.js')
         }
     });
@@ -42,11 +46,12 @@ app.on('window-all-closed', () => {
 
 
 ipcMain.on('runEvent', (event) => {
+    debugger;
     console.log("Inside main.js")
     console.log(process.cwd());
     // a = spawn('cd D:\\accubits\\Electron\\PB\\core\\tagui && tagui D:\\accubits\\Electron\\PB\\core\\tagui\\amazon.tag', { detached: true });
     // Will use relative path in the future
-    childProcess = exec("C:\Users\asish\Desktop\process-bud\tagui-core\tagui.cmd C:\Users\asish\Desktop\process-bud\tagui-flows\amazon.tag").on('error', function (err) { throw err; });
+    // childProcess = exec("C:\Users\asish\Desktop\process-bud\tagui-core\tagui.cmd C:\Users\asish\Desktop\process-bud\tagui-flows\amazon.tag").on('error', function (err) { throw err; });
 });
 
 ipcMain.on('terminateProcess', (event) => {
