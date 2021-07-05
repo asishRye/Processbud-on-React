@@ -10,6 +10,10 @@ function PlayerBtn() {
         window.api.request("runEvent", "some data");
     }
 
+    const stopTagui = () => {
+        window.api.request("stopEvent", "some data");
+}
+
     return <div className="player-btn">
         <button className="btn play-btn run" onClick={onRender}>
             <FontAwesomeIcon icon={faPlay} color="white" />
@@ -33,14 +37,3 @@ function PlayerBtn() {
 }
 
 export default PlayerBtn;
-
-function runTagui() {
-    console.log("Yaay it works!!!");
-    // ipcRenderer.send("runEvent");
-}
-
-function stopTagui() {
-    console.log("Yaay it stopped!!!");
-    // ipcRenderer.send("terminateProcess");
-}
-
