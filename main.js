@@ -1,14 +1,14 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
-const { exec, spawn } = require('child_process')
-
+const { exec } = require('child_process')
 const path = require('path');
 
+let win
 function createWindow() {
-    const win = new BrowserWindow({
+    win = new BrowserWindow({
         width: 1366,
         height: 768,
         resizable: true,
-        transparent: true,
+        frame: false,
         webPreferences: {
             enableRemoteModule:false,
             contextIsolation: true,
@@ -32,6 +32,7 @@ function createWindow() {
 
 app.whenReady().then(() => {
     createWindow();
+    win.maximize()
 
     app.on('activate', () => {
         if (BrowserWindow.getAllWindows().length === 0) {
@@ -52,6 +53,8 @@ ipcMain.on('runEvent', (event) => {
 
 
     // Using Exec
+    // Invoking tagui from system path doesn't work
+    // exec("tagui amazon.tag", {shell:"cmd.exe", cwd:"C://Users//Asish//Desktop//Projects//processbud_r//flowfiles"}, (err, stdout, stderr)=>{
     exec("C://tagui//src//tagui amazon.tag", {shell:"cmd.exe", cwd:"C://Users//Asish//Desktop//Projects//processbud_r//flowfiles"}, (err, stdout, stderr)=>{
         if (err){
             console.log("Error occured :(", err)
