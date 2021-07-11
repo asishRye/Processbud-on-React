@@ -15,7 +15,7 @@ function PlayerBtn() {
 }
 
     return <div className="player-btn">
-        <button className="btn play-btn run" onClick={onRender}>
+        <button className="btn play-btn run" onClick={runMe}>
             <FontAwesomeIcon icon={faPlay} color="white" />
             <span className="btn-text">
                 Run
@@ -27,7 +27,7 @@ function PlayerBtn() {
             </span>
             <FontAwesomeIcon icon={faArrowDown} color="grey" />
         </button>
-        <button className="btn play-btn stop" onClick={stopTagui}>
+        <button className="btn play-btn stop" onClick={stopMe}>
             <FontAwesomeIcon icon={faStop} color="white" />
             <span className="btn-text">
                 Stop
@@ -36,4 +36,19 @@ function PlayerBtn() {
     </div>;
 }
 
+
 export default PlayerBtn;
+
+var runMe = function() {
+    /*eslint-disable no-undef*/
+    mySpecfificFn([11,22,33], "another me");
+    /*eslint-enable no-undef*/
+
+}
+
+var stopMe = function() {
+    /*eslint-disable no-undef*/
+    mySpecfificFn([11,22,33], "another me but from stop");
+    /*eslint-enable no-undef*/
+
+}
